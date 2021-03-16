@@ -1,0 +1,42 @@
+---
+title: "Data visualisation Chart guide"
+author: "Nomena"
+date: "16/03/2021"
+output:
+  prettydoc::html_pretty:
+    theme: leonids
+    highlight: github
+    toc: true
+    math: katex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Chart graphique
+> Ce document présente une guide pour standardiser notre format, design et présentation des informations dans les composants de nos data visualisation: graphes, tables, diagrammes, ... Ce guide inclus quel le type de composant pourquoi et comment
+
+Ce guide est établie suivant la préférence de notre société et alimenter suivant les expériences que nous avons eux. Les elements cités dans ce guide est valable pour les cadres dont lesquelles ont effectuent une data visualisation: Dash, rapport d'analyse, résultats de modélisation, ...pour que ça soit consistent.
+
+## Les couleurs
+Quelles couleurs doivent être utilisées et que signifie chaque couleur dans la palette (les couleurs qui sont compatibles entre eux). 
+
+## Les graphiques
+Comment choisir le type de graphique adapté à la collection de données et au informations à communiquer. (Un tableau récap + Lien vers les notebooks)
+Pour chaque type de graphe (les plus utilisés) Comment les formater et exposer les informations pour chaque type de graphe.
+
+
+
+
+## Les légendes
+Que représente les légendes et comment on les dispose selon le type de graphe.
+
+## Design particuliers
+- Les données prédites doivent être distinguer (en pointillé par exemple)
+- Les cartes 
+- Responsive
+
+
+
+

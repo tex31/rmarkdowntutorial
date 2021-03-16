@@ -1,0 +1,65 @@
+---
+title: "Style de présentation des Insights"
+author: "Nomena"
+date: "10/03/2021"
+output: 
+  slidy_presentation:
+    footer: "BDA MVola"
+    duration: 5
+---
+
+```{css, echo=FALSE}
+body {
+  #background-image: url('https://linesteppers.com/tutorials/RMarkdown/img/BannerImage_TreeBlossoms_4470x3024.jpg');
+  #background-image: url('PresentationThemeDataLab.jpg')
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+div {
+  background-color: rgba(255, 255, 255, 0.35)   /* 35% opaque white */;
+  padding: 0.25em;
+}
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Présentation d'un Insight
+
+
+## Objectifs
+
+> -   Comprendre l'interêt d'une bonne présentation
+> -   Etablir une présentation pour atteindre ses objectifs
+
+## Data Storytelling
+
+![](datastorytelling.jpeg "Data storytelling")
+
+Data Storytelling = un moyen de créer des connaissances: nouvelles décisions/ actions.
+
+
+## Why ?
+
+> -   Eat eggs
+> -   Drink coffee
+
+# In the evening
+
+## Dinner
+
+-   Eat spaghetti
+-   Drink wine
+
+------------------------------------------------------------------------
+
+```{r, cars, fig.cap="A scatterplot.", echo=FALSE}
+plot(cars)
+```
+
+## Going to sleep
+
+-   Get in bed
+-   Count sheep
