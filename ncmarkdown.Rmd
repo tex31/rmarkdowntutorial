@@ -1,0 +1,212 @@
+---
+title: "Base de Connaissance"
+author: "Nomena"
+date: "09/03/2021"
+output:
+  html_document: default
+  pdf_document: default
+params:
+  goal: tex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown Chunk
+
+### Chunk name
+` ```{r by-name}` for chunk name: can set up networks of cached chunks to avoid re-performing expensive computations on every run.
+
+### Chunk options
+`eval = FALSE` prevents code from being evaluated. This is useful for displaying example code, or for disabling a large block of code without commenting each line.
+
+`include = FALSE` runs the code, but doesn’t show the code or results in the final document. Use this for setup code that you don’t want cluttering your report.
+
+`echo = FALSE` prevents code, but not the results from appearing in the finished file. Use this when writing reports aimed at people who don’t want to see the underlying R code.
+
+`message = FALSE` or `warning = FALSE` prevents messages or warnings from appearing in the finished file.
+
+`results = 'hide'` hides printed output; `fig.show = 'hide'` hides plots.
+
+`error = TRUE` causes the render to continue even if code returns an error.It’s also useful if you’re teaching R and want to deliberately include **an error**.
+
+## Table
+
+```{r}
+knitr::kable(
+  mtcars[1:5, ], 
+  caption = "A knitr kable."
+)
+```
+For even deeper customisation, consider the **xtable, stargazer, pander, tables, and ascii packages**.
+
+
+## Caching
+It can be painful if you have some computations that take a long time. The solution is `cache = TRUE`.
+
+`dependson = "raw_data"` should contain a character vector of every chunk that the cached chunk depends on. Knitr will update the results for the cached chunk whenever it detects that one of its dependencies have changed.
+
+regularly clear out all your caches with `knitr::clean_cache()`.
+
+## GLobal options
+````
+```{r, eval=FALSE}`r ''`
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE
+)
+```
+````
+uses my preferred comment formatting, and ensures that the code and output are kept closely entwined
+````
+```{r, eval=FALSE}`r ''`
+knitr::opts_chunk$set(
+  echo = FALSE
+)
+
+```
+````
+
+For report: only showing the chunks you deliberately choose to show (with `echo = TRUE`).
+
+
+## Inline Code
+````
+`r`
+````
+
+to embed R code into an R Markdown document: directly into the text
+
+## YAML header
+
+### Parameters
+
+Parameters are useful when you want to re-render the same report with distinct values for various key inputs.
+
+For example, you might be producing sales reports per branch, exam results by student, or demographic summaries by country
+
+
+This example uses a `my_class` parameter to determine which class of cars to display:
+
+````
+---
+output: html_document
+params:
+  my_class: "suv"
+---
+
+```{r setup, include = FALSE}`r ''`
+library(ggplot2)
+library(dplyr)
+
+class <- mpg %>% filter(class == params$my_class)
+```
+
+# Fuel economy for `r params$my_class`s
+
+```{r, message = FALSE}`r ''`
+ggplot(class, aes(displ, hwy)) + 
+  geom_point() + 
+  geom_smooth(se = FALSE)
+```
+````
+
+You can write atomic vectors directly into the YAML header. You can also run arbitrary R expressions by prefacing the parameter value with !r
+
+```
+params:
+  start: !r lubridate::ymd("2015-01-01")
+  snapshot: !r lubridate::ymd_hms("2015-01-01 12:30:00")
+```
+http://rmarkdown.rstudio.com/developer_parameterized_reports.html#parameter_user_interfaces
+
+`purrr:pwalk()` for advanced
+
+## Bibliographies and Citations
+To use this feature, specify a bibliography file using the bibliography field in your file’s header. The field should contain a path from the directory that contains your .Rmd file to the file that contains the bibliography file:
+
+````
+bibliography: rmarkdown.bib
+````
+To create a citation within your .Rmd file, use a key composed of ‘@’ + the citation identifier from the bibliography file.
+
+You can change the style of your citations and bibliography by referencing a CSL (citation style language) file in the csl field:
+
+````
+bibliography: rmarkdown.bib
+csl: apa.csl
+````
+http://github.com/citation-style-language/styles
+
+## R Markdown formats
+
+````
+title: "Viridis Demo"
+output: html_documen
+````
+
+````
+rmarkdown::render("diamond-sizes.Rmd", output_format = "word_document")
+````
+
+YAML param:
+
+````
+title: "Viridis Demo"
+output: html_document
+````
+
+````
+rmarkdown::render("diamond-sizes.Rmd", output_format = "word_document")
+````
+
+**Documents :**
+- pdf_document : PDF with LaTeX 
+- word_document : Microsoft Word documents (.docx).
+- odt_document : OpenDocument Text documents (.odt).
+- rtf_document : Rich Text Format (.rtf) documents
+- md_document : Markdown document. This isn’t typically useful by itself, but you might use it if, for example, your corporate CMS or lab wiki uses markdown.
+- github_document: this is a tailored version of md_document designed for sharing on GitHub.
+
+For `html_documents` another option is to make the code chunks hidden by default, but visible with a click:
+
+````
+output:
+  html_document:
+    code_folding: hide
+````
+
+**Notebooks :**
+- html_notebook: focused on collaborating with other data scientists
+Emailing .nb.html files is a simple way to share analyses with your colleagues. But things will get painful as soon as they want to make changes
+
+````
+output:
+  html_notebook: default
+  github_document: default
+````
+**Presentation**
+- `ioslides_presentation` : HTML presentation with ioslide
+- `slidy_presentation` : HTML presentation with W3C Slidy
+- `beamer_presentation` : PDF presentation with LaTeX Beamer
+
+- `revealjs::revealjs_presentation` - HTML presentation with reveal.js
+- `rmdshower`, https://github.com/MangoTheCat/rmdshower, provides a wrapper around the shower, https://github.com/shower/shower, presentation engine
+
+**Dashboards**
+Flexdashboard makes it particularly easy to create dashboards using R Markdow.
+
+````
+---
+title: "Diamonds distribution dashboard"
+output: flexdashboard::flex_dashboard
+---
+
+```{r setup, include = FALSE}`r ''`
+library(ggplot2)
+library(dplyr)
+knitr::opts_chunk$set(fig.width = 5, fig.asp = 1/3)
+```
+````
+
