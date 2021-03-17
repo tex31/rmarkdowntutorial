@@ -1,0 +1,24 @@
+--- 
+title: "Data visualisation Style guide"
+author: "BDA"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: "Style guide"
+---
+
+# Prerequisites
+
+> Ce guide est établie suivant la préférence de notre société et alimenter suivant les expériences que nous avons eux. Les elements cités dans ce guide est valable pour les cadres dont lesquelles ont effectuent une data visualisation: Dash, rapport d'analyse, résultats de modélisation, ...pour que ça soit consistent.
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
