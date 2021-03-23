@@ -1,3 +1,30 @@
+--- 
+title: "Data visualisation Style guide"
+author: "BDA"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: "Style guide"
+---
+
+# Prerequisites
+
+> Ce guide est établie suivant la préférence de notre société et alimenter suivant les expériences que nous avons eux. Les elements cités dans ce guide est valable pour les cadres dont lesquelles ont effectuent une data visualisation: Dash, rapport d'analyse, résultats de modélisation, ...pour que ça soit consistent.
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
+<!--chapter:end:index.Rmd-->
+
 # Introduction {#intro}
 
 Ce document présente une guide pour standardiser notre format, design et présentation des informations dans les composants de nos data visualisation: graphes, tables, diagrammes, ... Ce guide inclus quel type de composant pourquoi et comment
@@ -49,3 +76,38 @@ knitr::kable(
 ```
 
 You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
+
+<!--chapter:end:01-intro.Rmd-->
+
+# Couleurs
+
+Quelles couleurs doivent être utilisées et que signifie chaque couleur dans la palette (les couleurs qui sont compatibles entre eux). 
+
+<!--chapter:end:02-couleurs.Rmd-->
+
+# Les graphiques
+
+Comment choisir le type de graphique adapté à la collection de données et au informations à communiquer. (Un tableau récap + Lien vers les notebooks)
+Pour chaque type de graphe (les plus utilisés) Comment les formater et exposer les informations pour chaque type de graphe.
+
+<!--chapter:end:03-graphiques.Rmd-->
+
+# Les légendes
+
+Que représente les légendes et comment on les dispose selon le type de graphe.
+
+<!--chapter:end:04-legend.Rmd-->
+
+# Design particuliers
+- Les données prédites doivent être distinguer (en pointillé par exemple)
+- Les cartes 
+- Responsive
+
+<!--chapter:end:05-others.Rmd-->
+
+`r if (knitr:::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:06-references.Rmd-->
+
