@@ -1,0 +1,9 @@
+eq:eq1
+fig:example-plot
+intro
+présentation-des-insights
+intérêt-dune-présentation
+couleurs
+les-graphiques
+les-légendes
+design-particuliers
